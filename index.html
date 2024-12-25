@@ -1,0 +1,449 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="assets/style/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,100..900;1,100..900&display=swap"
+        rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,100..900;1,100..900&family=Tinos:ital,wght@0,400;0,700;1,400;1,700&display=swap"
+        rel="stylesheet">
+    <title>Restoran</title>
+
+</head>
+
+<body>
+    
+    <!-- HEADER -->
+
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <img class="header-content_logo" src="assets/images/logo.png" width="150" height="80">
+                <nav>
+                    <a class="checked" href="#welcome">Главная</a>
+                    <a href="#menu">Меню</a>
+                    <a href="#clients">Отзывы</a>
+                    
+                    <a href="#phone">Связаться с нами</a>
+                </nav>
+                <div class="header-content_last">
+                    <a href="#"><img src="assets/images/cart.png" alt=""></a>
+                    <a href="javascript:void(0);" id="loginBtn">Войти</a>
+
+<!-- Модальное окно "Входа" -->
+<div class="modal" id="loginModal">
+    <span class="close-modal">&times;</span> 
+    <article class="container-modal">
+        <div class="block-modal">
+            <section class="block__item block-item__modal">
+                <h2 class="block-item__title">У вас уже есть аккаунт?</h2>
+                <button class="block-item__btn signin-btn">Войти</button>
+            </section>
+            <section class="block__item block-item__modal">
+                <h2 class="block-item__title">У вас нет аккаунта?</h2>
+                <button class="block-item__btn signup-btn">Зарегистрироваться</button>
+            </section>
+
+            <div class="form-box">
+                <form action="#" class="form form-signin">
+                    <h3 class="form__title">Вход</h3>
+                    <p>
+                        <input type="text" class="form__input" placeholder="Логин">
+                    </p>
+                    <p>
+                        <input type="password" class="form__input" placeholder="Пароль">
+                    </p>
+                    <p>
+                        <button class="form__btn">Войти</button>
+                    </p>
+                </form>
+
+                <form action="#" class="form form-signup">
+                    <h3 class="form__title">Регистрация</h3>
+                    <p>
+                        <input type="text" class="form__input" placeholder="Логин">
+                    </p>
+                    <p>
+                        <input type="email" class="form__input" placeholder="Email">
+                    </p>
+                    <p>
+                        <input type="password" class="form__input" placeholder="Пароль">
+                    </p>
+                    <p>
+                        <input type="password" class="form__input" placeholder="Подтвердите пароль">
+                    </p>
+                    <p>
+                        <button class="form__btn form__btn-signup">Зарегистрироваться</button>
+                    </p>
+                </form>
+            </div>
+        </div>
+    </article>
+</div>
+
+<!-- Модальное окно "Заказ онлайн" -->
+<div id="orderModal" class="modal order-modal">
+    <div class="modal-content order-content">
+      <span class="close">&times;</span>
+      <h2>Заказ онлайн</h2>
+      <form action="order/index.html" method="post" class="form-order">
+        <label for="order-username">Имя пользователя:</label><br>
+        <input type="text" id="order-username" name="username" required><br>
+        
+        <label for="order-dish">Выберите блюдо:</label><br>
+        <select id="order-dish" name="dish" required>
+          <option value="Спагетти">Спагетти</option>
+          <option value="Гнокки">Гнокки</option>
+          <option value="Равиоли">Равиоли</option>
+          <option value="Penne Alla Vodka">Penne Alla Vodka</option>
+          <option value="Ризотто">Ризотто</option>
+        </select><br><br>
+        
+        <label for="order-quantity">Количество:</label><br>
+        <input type="number" id="order-quantity" name="quantity" min="1" required><br><br>
+        
+        <label for="order-comments">Комментарий (по желанию):</label><br>
+        <textarea id="order-comments" name="comments"></textarea><br><br>
+        
+        <input type="submit" value="Заказать">
+      </form>
+    </div>
+</div>
+
+<!-- Модальное окно "Бронирование" -->
+<div id="reserveModal" class="modal reserve-modal">
+    <div class="modal-content reserve-content">
+        <span class="close" id="closeReserveModal">&times;</span>
+        <h2>Бронирование столика</h2>
+        <form action="reserve/index.html" method="post" class="form-order">
+            <label for="reserve-name">Ваше Имя:</label><br>
+            <input type="text" id="reserve-name" name="name" required><br>
+            <label for="reserve-date">Дата:</label><br>
+            <input type="date" id="reserve-date" name="date" required><br><br>
+            <input type="submit" value="Забронировать">
+        </form>
+    </div>
+</div>
+                    
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- MAIN -->
+
+    <main>
+        <div class="container">
+            <div class="main-content">
+                <div>
+                    <div class="main-content_about">Ресторан</div>
+                    <h1>Итальянская<br> Кухня</h1>
+                    <p>Изысканные блюда итальянской кухни с уникальными рецептами. 
+                    Насладитесь вкусом свежих ингредиентов и мастерством наших поваров.</p>
+                    <div class="main-content__buttons">
+                        <a href="javascript:void(0);" id="orderBtn">Заказ онлайн</a>
+                    <a href="javascript:void(0);" id="reserveBtn">Бронирование</a>
+                    </div>
+                </div>
+                <div>
+                    <img src="assets/images/main.bg.png" alt="">
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- WELCOME -->
+
+    <section class="welcome">
+        <div id="welcome" class="container">
+            <div class="welcome-inner">
+                <img src="assets/images/welcome_bg.png" alt="">
+                <div>
+                    <h2>Добро пожаловать <span>Вкусная еда!!!</span></h2>
+                    <p>Мы рады приветствовать вас в нашем ресторане, 
+                    где каждый рецепт создан с любовью к качеству и 
+                    традициям итальянской кухни.</p>
+                    <a href="#menu">Посмотреть меню</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- MENU  -->
+
+    <section class="menu">
+        <div class="container">
+            <h2 id="menu">Наше популярное меню</h2>
+            <div class="menu-buttons">
+                <a class="checked" href="#">Все категории</a>
+                <a href="#">Ужин</a>
+                <a href="#">Обед</a>
+                <a href="#">Десерт</a>
+                <a href="#">Напитки</a>
+            </div>
+            <div class="menu-items">
+                <div class="menu-item">
+                    <img src="assets/images/menu/spag.png" alt="">
+                    <h3>Спагетти</h3>
+                    <div class="menu-items__raiting">
+                        <img src="assets/images/menu/star_orange.svg" alt="">
+                        <img src="assets/images/menu/star_orange.svg" alt="">
+                        <img src="assets/images/menu/star_orange.svg" alt="">
+                        <img src="assets/images/menu/star_orange.svg" alt="">
+                        <img src="assets/images/menu/star_white.svg" alt="">
+                    </div>
+                    <p>Классическое итальянское блюдо с насыщенным вкусом
+                    томатов и свежих трав.</p>
+                    <div class="menu-item__last">
+                        <h4 class="menu-item__last-price">80с</h4>
+                        <a href="#">Заказать сейчас</a>
+                    </div>
+                </div>
+                <div class="menu-item">
+                    <img src="assets/images/menu/gnoc.png" alt="">
+                    <h3>Гнокки</h3>
+                    <div class="menu-items__raiting">
+                        <img src="assets/images/menu/star_orange.svg" alt="">
+                        <img src="assets/images/menu/star_orange.svg" alt="">
+                        <img src="assets/images/menu/star_orange.svg" alt="">
+                        <img src="assets/images/menu/star_orange.svg" alt="">
+                        <img src="assets/images/menu/star_white.svg" alt="">
+                    </div>
+                    <p>Нежные картофельные гнокки с соусом из сливок 
+                    и свежего сыра пармезан.</p>
+                    <div class="menu-item__last">
+                        <h4 class="menu-item__last-price">50с</h4>
+                        <a href="#">Заказать сейчас</a>
+                    </div>
+                </div>
+                <div class="menu-item">
+                    <img src="assets/images/menu/rovio.png" alt="">
+                    <h3>Равиоли</h3>
+                    <div class="menu-items__raiting">
+                        <img src="assets/images/menu/star_orange.svg" alt="">
+                        <img src="assets/images/menu/star_orange.svg" alt="">
+                        <img src="assets/images/menu/star_orange.svg" alt="">
+                        <img src="assets/images/menu/star_orange.svg" alt="">
+                        <img src="assets/images/menu/star_white.svg" alt="">
+                    </div>
+                    <p>Равиоли с начинкой из рикотты и шпината, подаются 
+                    с соусом из томатов.</p>
+                    <div class="menu-item__last">
+                        <h4 class="menu-item__last-price">100с</h4>
+                        <a href="#">Заказать сейчас</a>
+                    </div>
+                </div>
+                <div class="menu-item">
+                    <img src="assets/images/menu/penne.png" alt="">
+                    <h3>Penne Alla Vodak</h3>
+                    <div class="menu-items__raiting">
+                        <img src="assets/images/menu/star_orange.svg" alt="">
+                        <img src="assets/images/menu/star_orange.svg" alt="">
+                        <img src="assets/images/menu/star_orange.svg" alt="">
+                        <img src="assets/images/menu/star_orange.svg" alt="">
+                        <img src="assets/images/menu/star_white.svg" alt="">
+                    </div>
+                    <p>Итальянское блюдо из макаронных изделий, 
+                    для которого используются паста пенне и соус.</p>
+                    <div class="menu-item__last">
+                        <h4 class="menu-item__last-price">60с</h4>
+                        <a href="#">Зааказать сейчас</a>
+                    </div>
+                </div>
+                <div class="menu-item">
+                    <img src="assets/images/menu/risolo.png" alt="">
+                    <h3>Рисото</h3>
+                    <div class="menu-items__raiting">
+                        <img src="assets/images/menu/star_orange.svg" alt="">
+                        <img src="assets/images/menu/star_orange.svg" alt="">
+                        <img src="assets/images/menu/star_orange.svg" alt="">
+                        <img src="assets/images/menu/star_orange.svg" alt="">
+                        <img src="assets/images/menu/star_white.svg" alt="">
+                    </div>
+                    <p>Блюдо итальянской кухни из риса, с мягким, сливочным вкусом.</p>
+                    <div class="menu-item__last">
+                        <h4 class="menu-item__last-price">70с</h4>
+                        <a href="#">Заказать сейчас</a>
+                    </div>
+                </div>
+                <div class="menu-item">
+                    <img src="assets/images/menu/split.png" alt="">
+                    <h3>Splitza Signature</h3>
+                    <div class="menu-items__raiting">
+                        <img src="assets/images/menu/star_orange.svg" alt="">
+                        <img src="assets/images/menu/star_orange.svg" alt="">
+                        <img src="assets/images/menu/star_orange.svg" alt="">
+                        <img src="assets/images/menu/star_orange.svg" alt="">
+                        <img src="assets/images/menu/star_white.svg" alt="">
+                    </div>
+                    <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Explicabo dicta, fugit officia quo aliquid
+                    ipsa voluptatum. Natus veritatis ipsum, quisquam debitis ex facere ipsa alias voluptate repellendus
+                    blanditiis unde similique.</p>
+                    <div class="menu-item__last">
+                        <h4 class="menu-item__last-price">55с</h4>
+                        <a href="#">Заказать сейчас</a>
+                    </div>
+                </div>
+            </div>
+            <div class="menu-pag">
+                <a class="back" href="#"><span><</span></a>
+                <a class="page" href="#"><span>1</span></a>
+                <a class="page" href="#"><span>2</span> </a>
+                <a class="page" href="#"><span>3</span></a>
+                <a class="dot" href="#"><span>...</span></a>
+                <a class="next" href="#"><span>></span></a>
+            </div>
+        </div>
+    </section>
+
+    <!-- RESERVE -->
+
+    <section class="reserve">
+        <div id="reserve" class="container">
+            <div class="reserve-inner">
+                <div class="reserve-left">
+                    <img src="assets/images/reserv.png" alt="">
+                </div>
+                <div class="reserve-right">
+                    <h2>Забронируйте <span>столик</span></h2>
+                    <p>Наслаждайтесь уютной атмосферой 
+                    и отличным сервисом. Забронируйте столик прямо сейчас!</p>
+                        <div class="reserve-right__buttons">
+                            <a href="#">Забронировать</a>
+                        </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CHEFS -->
+
+    <section class="chefs">
+        <div class="container">
+            <h2>Наши лучшие шеф-повара</h2>
+            <div class="chefs-inner">
+                <div class="chefs-item">
+                    <img src="assets/images/chefs/Betran.png" alt="">
+                    <h3>Бертран Комар</h3>
+                    <p>Главный шеф</p>
+                </div>
+                <div class="chefs-item">
+                    <img src="assets/images/chefs/Ferry.png" alt="">
+                    <h3>Ферри Сауви</h3>
+                    <p>Шеф-пекарь</p>
+                </div>
+                <div class="chefs-item">
+                    <img src="assets/images/chefs/Iswan.png" alt="">
+                    <h3>Нади Паскал</h3>
+                    <p>Шеф-повар</p>
+                </div>
+            </div>
+            <a href="#" class="chefs-all">Посмотреть все</a>
+        </div>
+    </section>
+
+    <!-- CLIENTS -->
+
+    <section class="clients">
+        <div id="clients" class="container">
+            <div class="clients-inner">
+                <h2 class="clients-title">Our customers say</h2>
+                <div class="clients-about">
+                    <img class="clients-inner-img" src="assets/images/main-girl.png" alt="">
+                    <h2 class="clients-about-title">Starla Viirgout</h2>
+                    <p class="clients-about-text">Financial advisor</p>
+                    <div class="clients-about-inner">
+                        <p>Lorem, ipsum dolor sit amet consectetur 
+                        adipisicing elit. Et, tenetur mollitia 
+                        laborum doloremque nulla deserunt velit vero! </p>
+                        <img id="dot1" src="assets/images/dots.png" alt="">
+                        <img id="dot2" src="assets/images/dots.png" alt="">
+                    </div>
+                    <img class="clients-about-users" src="assets/images/users.png" alt="">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- OPEN -->
+
+    <section  class="open">
+        <div class="container">
+            <div class="open-from">
+                <h2 class="we">We are open from</h2>
+                <div class="open-text">
+                    <h3>Monday-Sunday</h3>
+                    <p>Launch : Mon-Sun : 11:00am-02:00pm <br>
+                    Dinner : sunday : 04:00pm-08:00pm <br>
+                    04:00pm-09:00pm <br>
+                    </p>
+                </div>
+                <div class="open-buttons">
+                    <a href="#">Заказать сейчас</a>
+                    <a href="#">Забронировать</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+
+    <footer>
+        <div class="footer-container">
+            <div class="footer-column brand">
+                <div class="logo"><img src="assets/images/logo.png" alt="" width="150" height="80"></div>
+                <h3>Вкусная еда!</h3>
+                <p>Мы рады приветствовать вас в нашем ресторане, 
+                где каждый рецепт создан с любовью к качеству и 
+                традициям итальянской кухни.</p>
+                <div class="social-icons">
+                    <a href="#"><img src="assets/images/twitter.png" class="fa fa-twitter"></i></a>
+                    <a href="#"><img src="assets/images/instagram.png" class="fa fa-instagram"></i></a>
+                    <a href="#"><img src="assets/images/facebook.png" class="fa fa-facebook"></i></a>
+                </div>
+            </div>
+            <div class="footer-column">
+                <h4>Страница</h4>
+                <ul>
+                    <li><a href="#">Главная</a></li>
+                    <li><a href="#">Меню</a></li>
+                    <li><a href="#">Заказать онлайн</a></li>
+                    <li><a href="#">Питание</a></li>
+                    <li><a href="#">Забронировать</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h4>Информации</h4>
+                <ul>
+                    <li><a href="#">About us</a></li>
+                    <li><a href="#">Testimonial</a></li>
+                    <li><a href="#">Event</a></li>
+                </ul>
+            </div>
+            <div id="phone" class="footer-column">
+                <h4>Связаться с нами</h4>
+                <p>3247 Johnson Ave, Bronx, NY 10463, Amerika Serikat</p>
+                <p>deliciousfood@gmail.com</p>
+                <p>+123 4567 8901</p>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>Copyright © <span id="year"></span> Вкусная еда!!!</p>
+        </div>
+    </footer>
+<script src="assets/js/javas.js"></script>
+</body>
+
+</html>
